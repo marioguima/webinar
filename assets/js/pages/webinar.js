@@ -4,7 +4,7 @@ $(document).ready(
 
         $('.login-trigger').click(function(event) {
             $('#login-Modal').modal({    
-                backdrop: 'static',
+                // backdrop: 'static',
                 keyboard: false
             });
         });
@@ -22,6 +22,6 @@ $(document).ready(
         }));
 
         $('#login-Modal').on('hidden.bs.modal', function(event) {
-            $('#login-msg').fadeIn();
+            $('#login-msg').hide();
         });
     });
