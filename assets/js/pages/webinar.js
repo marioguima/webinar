@@ -2,8 +2,8 @@ $(document).ready(
     function() {
         $('#login-msg').hide();
 
-        $('#change-nickname').click(function(event) {
-            $('#login-Modal').modal({    
+        $('#change-nickname, #login-chat').click(function(event) {
+            $('#login-Modal').modal({
                 // backdrop: 'static',
                 keyboard: false
             });
