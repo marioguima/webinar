@@ -2,7 +2,7 @@ $(document).ready(
     function() {
         $('#login-msg').hide();
 
-        $('.login-trigger').click(function(event) {
+        $('#change-nickname').click(function(event) {
             $('#login-Modal').modal({    
                 // backdrop: 'static',
                 keyboard: false
