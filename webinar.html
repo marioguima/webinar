@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Convert Webinar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Venda através do Webinar como nunca ninguém imaginou" name="description" />
+    <meta content="Mário Guimarães" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- magnific-popup css -->
+    <link href="assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="assets/libs/owl.carousel/assets/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="assets/libs/owl.carousel/assets/owl.theme.default.min.css">
+
+    <!-- Bootstrap Css -->
+    <!-- <link href="assets/css/bootstrap-dark.min.css" id="bootstrap-dark-style" rel="stylesheet" type="text/css" /> -->
+    <link href="assets/css/bootstrap-dark.css" id="bootstrap-dark-style" rel="stylesheet" type="text/css" />
+    <!-- <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" disabled="true" /> -->
+    <link href="assets/css/bootstrap.css" id="bootstrap-style" rel="stylesheet" type="text/css" disabled="true" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app-dark.css" id="app-dark-style" rel="stylesheet" type="text/css" />
+    <!-- <link href="assets/css/app-dark.min.css" id="app-dark-style" rel="stylesheet" type="text/css" /> -->
+    <link href="assets/css/app.css" id="app-style" rel="stylesheet" type="text/css" disabled="true" />
+    <!-- <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" disabled="true" /> -->
+
+    <!-- custom css -->
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="full-screen d-flex vh-100">
+
+        <div class="modal fade" id="login-Modal" tabindex="-1" role="dialog" aria-labelledby="login-ModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-size-16" id="login-ModalLabel">Participe do chat</h5>
+                    </div>
+                    <div class="modal-body pt-4 pl-4 pr-4 pb-1">
+                        <form id="nickname-form">
+                            <div class="form-group mb-4">
+                                <label for="nickname-input">Qual seu nome?</label>
+                                <input type="text" class="form-control" id="nickname-input" placeholder="Digite aqui...">
+                            </div>
+                            <div id="login-msg" class="alert alert-warning" role="alert">
+                                Digite <strong>seu nome ou apelido</strong>, por favor.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Fechar</button>
+                        <button type="submit" form="nickname-form" class="btn btn-primary">Entrar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cover-webinar"></div>
+        </div>
+
+        <div class="video-area align-items-start d-flex flex-column pl-md-2 pr-md-2">
+            <!-- video -->
+
+            <div class="embed-responsive embed-responsive-16by9">
+                <!-- <iframe id="yt-video" src="https://www.youtube.com/embed/dMlRgFBfSbI?enablejsapi=1&controls=0&cc_load_policy=0&disablekb=1&fs=0&iv_load_policy=3&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                <iframe id="yt-video" src="https://www.youtube.com/embed/-3F1B0VBews?enablejsapi=1&controls=0&cc_load_policy=0&disablekb=1&fs=0&iv_load_policy=3&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div id="video-overlay">
+                    <div id="play-video" class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center">
+                        <i class="ri-play-fill"></i>
+                    </div>
+                    <div id="image-cover"></div>
+                    <div id="bars" class="d-flex flex-column">
+                        <div id="bar-up" class="d-flex justify-content-center align-items-center">Dia 1 - Semana do Destravar do Emagrecimento</div>
+                        <div id="bar-down" class="mt-auto d-flex justify-content-center align-items-center">Verifique seu auto-falante ou fone de ouvido</div>
+                    </div>
+                </div>
+                <div class="featured-message d-flex align-items-end justify-content-center">
+                    aqui vai aparecer a mensagem destacada
+                </div>
+            </div>
+            <!-- fim video -->
+
+            <!-- cta -->
+            <button type="button" class="mt-2 btn btn-lg btn-block btn-cta-orange">GARANTIR MINHA VAGA</button>
+            <!-- <button type="button" id="play-video" class="mt-2 btn btn-sm btn-block btn-cta-orange">PLAY</button> -->
+            <!-- fim cta -->
+        </div>
+        <div class="user-chat d-flex flex-column flex-fill col-md-4 col-lg-3">
+            <div class="chat-header row align-items-start">
+                <div class="col-md-12 pb-2 border-bottom">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- icones -->
+                            <ul class="list-inline user-chat-nav text-center mb-0 col-12">
+
+                                <li class="list-inline-item">
+                                    <button class="btn nav-btn dropdown-toggle" type="button" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Presentes">
+                                            <i class="ri-gift-line"></i>
+                                            <span class="badge badge-info">1</span>
+                                        </button>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <button type="button" class="btn nav-btn user-profile-show" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Pessoas na sala">
+                                            <i class="ri-user-2-line"></i>
+                                        </button>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a class="btn nav-btn" id="light-dark" href="#" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Claro / Escuro">
+                                        <i class="ri-sun-line theme-mode-icon"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <!-- fim icones -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 data-info-event">
+                            <!-- info event -->
+                            <ul class="list-inline user-chat-nav text-center mb-0 col-12">
+                                <li class="list-inline-item"></li>
+                                <li class="list-inline-item"><span id="people_room">200</span></li>
+                                <li class="list-inline-item"></li>
+                            </ul>
+                            <!-- fim info event -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- chat conversation -->
+            <div class="chat-conversation row" data-simplebar>
+                <div class="col-md-12">
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <div class="conversation-list">
+                                <div class="user-chat-content">
+                                    <div class="ctext-wrap">
+                                        <div class="ctext-wrap-content">
+                                            <p class="mb-0">
+                                                Boa noite!
+                                            </p>
+                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="conversation-name">
+                                        Márcia Santos
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="right">
+                            <div class="conversation-list">
+                                <div class="chat-avatar">
+                                    <img src="assets/images/users/avatar-mario-guimaraes.jpg" alt="">
+                                </div>
+
+                                <div class="user-chat-content">
+                                    <div class="ctext-wrap">
+                                        <div class="ctext-wrap-content">
+                                            <p class="mb-0">
+                                                Boa noite Márcia Santos. Que bom que você chegou!
+
+                                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:02</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="conversation-name">Mário Guimarães</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="conversation-list">
+                                <div class="user-chat-content">
+
+                                    <div class="ctext-wrap">
+                                        <div class="ctext-wrap-content">
+                                            <p class="mb-0">
+                                                Ótima noite Mário!
+                                            </p>
+                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="conversation-name">Doris Mika</div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="conversation-list">
+                                <div class="user-chat-content">
+
+                                    <div class="ctext-wrap">
+                                        <div class="ctext-wrap-content">
+                                            <p class="mb-0">
+                                                já vai começar 20:00
+                                            </p>
+                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="conversation-name">Doris Mika</div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="right">
+                            <div class="conversation-list">
+                                <div class="chat-avatar">
+                                    <img src="assets/images/users/avatar-mario-guimaraes.jpg" alt="">
+                                </div>
+
+                                <div class="user-chat-content">
+                                    <div class="ctext-wrap">
+                                        <div class="ctext-wrap-content">
+                                            <p class="mb-0">
+                                                Ótima noite Doris Mika. Que bom que você está aqui!
+                                            </p>
+                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="conversation-name">Mário Guimarães</div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="conversation-list">
+                                <div class="user-chat-content">
+
+                                    <div class="ctext-wrap">
+                                        <div class="ctext-wrap-content">
+                                            <p class="mb-0">
+                                                já vai começar 20:00
+                                            </p>
+                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="conversation-name">Doris Mika</div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="right">
+                            <div class="conversation-list">
+                                <div class="chat-avatar">
+                                    <img src="assets/images/users/avatar-mario-guimaraes.jpg" alt="">
+                                </div>
+
+                                <div class="user-chat-content">
+                                    <div class="ctext-wrap">
+                                        <div class="ctext-wrap-content">
+                                            <p class="mb-0">
+                                                Ótima noite Doris Mika. Que bom que você está aqui! Vamos ver se ele vai quebrar a linha ou se vai quebrar!
+                                            </p>
+                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="conversation-name">Mário Guimarães</div>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- end chat conversation -->
+
+            <!-- chat message -->
+            <div class="chat-message row p-2 p-lg-3 border-top mb-0">
+                <div class="col-md-12">
+                    <!-- chama a tela de login -->
+                    <div class="login-trigger"></div>
+
+                    <!-- envia mensagem -->
+                    <div class="row no-gutters">
+                        <div class="col">
+                            <div>
+                                <input type="text" class="form-control form-control-lg bg-light border-light" placeholder="Digite sua mensagem...">
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="chat-input-links ml-2">
+                                <ul class="list-inline mb-0">
+                                    <li class="list-inline-item">
+                                        <button type="submit" class="btn btn-primary font-size-16 btn-lg chat-send waves-effect waves-light">
+                                            <i class="ri-send-plane-2-fill"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end chat message -->
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Magnific Popup-->
+    <script src="assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- owl.carousel js -->
+    <script src="assets/libs/owl.carousel/owl.carousel.min.js"></script>
+
+    <!-- page init -->
+    <script src="assets/js/pages/index.init.js"></script>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/youtube.js"></script>
+    <script src="assets/js/pages/webinar.js"></script>
+
+</body>
+
+
+</html>
