@@ -9,8 +9,7 @@ describe('Gerar Mensagem', () => {
             data = "Mensagem de teste"
         var message = generateMessage(from, data);
 
-        expect(typeof message.date).toBe('string');
-        expect(typeof message.time).toBe('string');
+        expect(typeof message.createdAt).toBe('number');
         expect(message).toMatchObject({ from, data });
     })
 });

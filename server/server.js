@@ -59,13 +59,13 @@ app.get('/admin', (request, response) =>
     response.sendFile(__dirname + '/admin/index.html'));
 
 serverSocket.on('connection', (socket) => {
+    socket.on('nickname.set', (messageBody) =>
+        nicknameSet(messageBody)
+    );
+
     socket.on('nickname.change', (messageBody) =>
         serverSocket.emit('nickname.changed',
             generateMessage(messageBody.from, messageBody.data))
-    );
-
-    socket.on('join', (messageBody) =>
-        joinChat(messageBody)
     );
 
     socket.on('message.new', (messageBody) =>
@@ -88,12 +88,12 @@ serverSocket.on('disconnect', () => {
     console.log('Cliente desconectou');
 })
 
-function joinChat(messageBody) {
+function nicknameSet(messageBody) {
     if (!process.env.HEROKU_APP_NAME) {
         console.log('Join chat: ' + messageBody.from);
     }
 
-    serverSocket.emit('joined',
+    serverSocket.emit('nickname.seted',
         generateMessage(messageBody.from, messageBody.data));
 
     welcome(messageBody);
@@ -120,7 +120,7 @@ function saudacao() {
 }
 
 function welcome(messageBody) {
-    var aSaudacoes = [
+    var aMensagens = [
         ', que bom que você está aqui 👏.',
         ', que bom que você chegou 🤝.',
         ', estou feliz que você chegou.',
@@ -128,12 +128,12 @@ function welcome(messageBody) {
         ', 👏👏👏.'
     ];
 
-    var sRecepcionar =
+    var sBoasVindas =
         saudacao() +
         ' ' +
         messageBody.from +
-        aSaudacoes[(Math.random() * aSaudacoes.length) | 0];
+        aMensagens[(Math.random() * aMensagens.length) | 0];
 
     serverSocket.emit('welcome',
-        generateMessage('admin', sRecepcionar));
+        generateMessage('admin', sBoasVindas));
 }

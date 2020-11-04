@@ -3,6 +3,8 @@ $(function() {
     const socket = io();
 
     // Join Chat
+
+    // mensagem de aviso
     $('#nickname-form-msg').hide();
 
     // chama o formulário para definir ou alterar o nickname
@@ -15,16 +17,32 @@ $(function() {
         event.preventDefault();
         var nickname = $("#nickname-input").val().trim();
 
+        // se foi apagada
+        if (!localStorage.cid) {
+            localStorage.cid = getAllUrlParams().c;
+        }
+
+        // se foi apagada
+        if (!localStorage.sid) {
+            localStorage.sid = socket.id;
+        }
+
         if (nickname) {
+            // if (!localStorage.nickname) {
+            //     localStorage.nickname = nickname;
+            //     // $('#nickname-button').hide();
+            //     // $('#send-message').show();
+            // }
+
             $('#nickname-Modal').modal('hide');
             $('#nickname-button').hide();
             $('#send-message').removeClass('d-none');
 
             if (localStorage.nickname == "") {
-                socket.emit('join', {
+                socket.emit('nickname.set', {
                     from: nickname
                 });
-            } else {
+            } else if (localStorage.nickname != nickname) {
                 socket.emit('nickname.change', {
                     from: localStorage.nickname,
                     data: nickname
@@ -53,38 +71,64 @@ $(function() {
         var sMessage = $('#send-message-text').val().trim();
 
         if (sMessage) {
-
-            var messageBody = {
-                from: localStorage.nickname,
-                data: sMessage,
+            // se foi apagada
+            if (!localStorage.nickname) {
+                localStorage.nickname = $("#nickname-input").val().trim();
+            }
+            if (!localStorage.cid) {
+                localStorage.cid = getAllUrlParams().c;
+            }
+            if (!localStorage.sid) {
+                localStorage.sid = socket.id;
             }
 
-            // // associa uma função ao keypress somente após o usuário definir o nickname
-            // $('#send-message-text').keypress(function(event) {
-            //     socket.emit('typing', `${localStorage.nickname} está digitando...`);
-            // });
+            if (localStorage.nickname != "" & localStorage.cid != "") {
 
-            // // associa uma função ao keyup somente após o usuário definir o nickname
-            // // envia uma mensagem vazia para apagar o aviso que o usuário está digitando
-            // $('#send-message-text').keyup(function(event) {
-            //     socket.emit('typing', '');
-            // });
+                var messageBody = {
+                    from: localStorage.nickname,
+                    data: sMessage,
+                }
 
-            // // informando que um usuário está digitando
-            // socket.on('typing', function(msg) {
-            //     $('#status').html(msg);
-            // });
+                // // associa uma função ao keypress somente após o usuário definir o nickname
+                // $('#send-message-text').keypress(function(event) {
+                //     socket.emit('typing', `${localStorage.nickname} está digitando...`);
+                // });
 
-            // emitir a mensagem para o servidor
-            socket.emit('message.new', messageBody);
+                // // associa uma função ao keyup somente após o usuário definir o nickname
+                // // envia uma mensagem vazia para apagar o aviso que o usuário está digitando
+                // $('#send-message-text').keyup(function(event) {
+                //     socket.emit('typing', '');
+                // });
 
-            // limpar o campo da mensagem
-            $('#send-message-text').val('');
+                // // informando que um usuário está digitando
+                // socket.on('typing', function(msg) {
+                //     $('#status').html(msg);
+                // });
+
+                // emitir a mensagem para o servidor
+                socket.emit('message.new', messageBody);
+
+                // limpar o campo da mensagem
+                $('#send-message-text').val('');
+            } else {
+                $('#nickname-button').show();
+                $('#send-message').hide();
+                $('#nickname-Modal').modal();
+            }
         }
     });
 
+    function scrollToBottom() {
+        let messages = document.getElementById('messages').lastElementChild;
+        messages.scrollIntoView();
+    }
+
+    // comuncation with server by socket.io
     socket.on('connect', function() {
-        if (getAllUrlParams().c == localStorage.cid & localStorage.nickname != "") {
+        // let params = window.location.search.substring(1)
+        // params = JSON.parse('{"' + decodeURI(params).replace(/&/g, '","').replace(/\+/g, ' ').replace(/=/g, '":"') + '"}');
+        let allParams = getAllUrlParams();
+        if (getAllUrlParams().c == localStorage.cid & localStorage.nickname !== undefined & localStorage.nickname != "") {
             imBack();
         } else {
             localStorage.cid = getAllUrlParams().c;
@@ -93,7 +137,7 @@ $(function() {
         }
     });
 
-    socket.on('joined', function(messageBody) {
+    socket.on('nickname.seted', function(messageBody) {
         // informa que a pessoa entrou na sala
         renderMessageJoinChat(messageBody);
     });
@@ -104,20 +148,49 @@ $(function() {
                 <span class="title">${messageBody.from} entrou na sala</span>
             </div>
             `
-        $('#messages').prepend(
+        $('#messages').append(
             $('<li>').html(sHtml));
+
+        scrollToBottom();
     }
 
     socket.on('welcome', function(messageBody) {
-        welcome(messageBody);
-    });
-
-    function welcome(messageBody) {
         // recepciona a pessoa que acabou de entrar
         // aguarda entre 5 a 10 segundos, para parecer mais real
         setTimeout(async function() {
             renderMessageAdmin(messageBody);
         }, getRandomInt(5, 10) * 1000);
+    });
+
+    // Render message
+    function renderMessageAdmin(messageBody) {
+        const formattedTime = moment(messageBody.createdAt).format('LT');
+
+        sHtml = `
+        <div class="conversation-list">
+            <div class="chat-avatar">
+                <img src="/assets/images/users/presenter.jpg" alt="">
+            </div>
+            <div class="user-chat-content">
+                <div class="ctext-wrap">
+                    <div class="ctext-wrap-content">
+                        <p class="mb-0">
+                            ${messageBody.data}
+                        </p>
+                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${formattedTime}</span></p>
+                    </div>
+                </div>
+                <div class="conversation-name">
+                    ${messageBody.from}
+                </div>
+            </div>
+        </div>
+        `
+
+        $('#messages').append(
+            $('<li class="right">').html(sHtml));
+
+        scrollToBottom();
     }
 
     socket.on('nickname.changed', function(messageBody) {
@@ -131,13 +204,42 @@ $(function() {
                 <span class="title"><i>${messageBody.from}</i> mudou para <strong>${messageBody.data}</strong></span>
             </div>
             `
-        $('#messages').prepend(
+        $('#messages').append(
             $('<li>').html(sHtml));
+
+        scrollToBottom();
     }
 
     socket.on('message.share', function(messageBody) {
         renderMessageParticipant(messageBody);
     });
+
+    function renderMessageParticipant(messageBody) {
+        const formattedTime = moment(messageBody.createdAt).format('LT');
+
+        sHtml = `
+                <div class="conversation-list">
+                    <div class="user-chat-content">
+                        <div class="ctext-wrap">
+                            <div class="ctext-wrap-content">
+                                <p class="mb-0">
+                                    ${messageBody.data}
+                                </p>
+                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${formattedTime}</span></p>
+                            </div>
+                        </div>
+                        <div class="conversation-name">
+                            ${messageBody.from}
+                        </div>
+                    </div>
+                </div>
+                `
+
+        $('#messages').append(
+            $('<li>').html(sHtml));
+
+        scrollToBottom();
+    }
 
     socket.on('cta', function(messageBody) {
         $('#footer').html(messageBody.data);
@@ -156,69 +258,9 @@ $(function() {
         // carrega as mensagens
     }
 
-    // Render message
-    function renderMessageAdmin(messageBody) {
-        // var aSaudacoes = [
-        //     ', que bom que você está aqui 👏.',
-        //     ', que bom que você chegou 🤝.',
-        //     ', estou feliz que você chegou.',
-        //     ', estou feliz que você está aqui.',
-        //     ', 👏👏👏.'
-        // ];
 
-        // var sRecepcionar =
-        //     saudacao() +
-        //     ' ' +
-        //     messageBody.from +
-        //     aSaudacoes[(Math.random() * aSaudacoes.length) | 0];
 
-        sHtml = `
-        <div class="conversation-list">
-            <div class="chat-avatar">
-                <img src="/assets/images/users/presenter.jpg" alt="">
-            </div>
-            <div class="user-chat-content">
-                <div class="ctext-wrap">
-                    <div class="ctext-wrap-content">
-                        <p class="mb-0">
-                            ${messageBody.data}
-                        </p>
-                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${messageBody.time.substr(0,5)}</span></p>
-                    </div>
-                </div>
-                <div class="conversation-name">
-                    ${messageBody.from}
-                </div>
-            </div>
-        </div>
-        `
 
-        $('#messages').prepend(
-            $('<li class="right">').html(sHtml));
-    }
-
-    function renderMessageParticipant(messageBody) {
-        sHtml = `
-                <div class="conversation-list">
-                    <div class="user-chat-content">
-                        <div class="ctext-wrap">
-                            <div class="ctext-wrap-content">
-                                <p class="mb-0">
-                                    ${messageBody.data}
-                                </p>
-                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${messageBody.time.substr(0,5)}</span></p>
-                            </div>
-                        </div>
-                        <div class="conversation-name">
-                            ${messageBody.from}
-                        </div>
-                    </div>
-                </div>
-                `
-
-        $('#messages').prepend(
-            $('<li>').html(sHtml));
-    }
 
 
     // toastr

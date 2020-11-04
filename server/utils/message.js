@@ -1,9 +1,10 @@
+const moment = require('moment');
+
 let generateMessage = (from, data) => {
     return {
         from,
         data,
-        date: new Date().toLocaleDateString('pt-BR'),
-        time: new Date().toLocaleTimeString('pt-BR')
+        createdAt: moment().valueOf()
     };
 };
 
