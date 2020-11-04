@@ -3,12 +3,24 @@
 html,
 body,
 .full-screen {
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
 }
 
 body {
     margin: 0;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 
@@ -19,8 +31,8 @@ body {
     overflow: scroll;
 }
 
-.chat-header,
-.chat-message {
+#chat-header,
+#send-message {
     overflow: hidden;
     flex: 0 0 auto;
 }
@@ -96,11 +108,7 @@ body {
     box-shadow: 0 0 0 .15rem rgba(106, 179, 243, .5)
 }
 
-.data-info-event {
-    margin-top: -10px !important;
-}
-
-.data-info-event {
+.people-in-room {
     font-size: 12px;
 }
 
@@ -185,4 +193,23 @@ body {
 
 #login-Modal {
     overflow: hidden;
+}
+
+
+/* 
+.padded-multiline {
+    line-height: 1.4;
+    padding: 2px 0;
+    width: 400px;
+    margin: 20px auto;
+} */
+
+span.title {
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+#nickname-label {
+    cursor: pointer;
 }

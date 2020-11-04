@@ -3,59 +3,62 @@
 
 <head>
 
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta charset="utf-8" />
     <title>Convert Webinar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Venda através do Webinar como nunca imaginou que é possível" name="description" />
     <meta content="Mário Guimarães" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="/../assets/images/favicon.ico">
 
     <!-- magnific-popup css -->
-    <link href="assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
 
     <!-- owl.carousel css -->
-    <link rel="stylesheet" href="assets/libs/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/libs/owl.carousel/assets/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="assets/libs/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/libs/owl.carousel/assets/owl.theme.default.min.css">
 
     <!-- Bootstrap Css -->
-    <!-- <link href="assets/css/bootstrap-dark.min.css" id="bootstrap-dark-style" rel="stylesheet" type="text/css" /> -->
-    <link href="assets/css/bootstrap-dark.css" id="bootstrap-dark-style" rel="stylesheet" type="text/css" />
-    <!-- <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" disabled="true" /> -->
-    <link href="assets/css/bootstrap.css" id="bootstrap-style" rel="stylesheet" type="text/css" disabled="true" />
+    <!-- <link href="/assets/css/bootstrap-dark.min.css" id="bootstrap-dark-style" rel="stylesheet" type="text/css" /> -->
+    <link href="/assets/css/bootstrap-dark.css" id="bootstrap-dark-style" rel="stylesheet" type="text/css" />
+    <!-- <link href="/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" disabled="true" /> -->
+    <link href="/assets/css/bootstrap.css" id="bootstrap-style" rel="stylesheet" type="text/css" disabled="true" />
     <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="assets/css/app-dark.css" id="app-dark-style" rel="stylesheet" type="text/css" />
-    <!-- <link href="assets/css/app-dark.min.css" id="app-dark-style" rel="stylesheet" type="text/css" /> -->
-    <link href="assets/css/app.css" id="app-style" rel="stylesheet" type="text/css" disabled="true" />
-    <!-- <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" disabled="true" /> -->
+    <link href="/assets/css/app-dark.css" id="app-dark-style" rel="stylesheet" type="text/css" />
+    <!-- <link href="/assets/css/app-dark.min.css" id="app-dark-style" rel="stylesheet" type="text/css" /> -->
+    <link href="/assets/css/app.css" id="app-style" rel="stylesheet" type="text/css" disabled="true" />
+    <!-- <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" disabled="true" /> -->
 
     <!-- custom css -->
-    <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/custom.css" rel="stylesheet" type="text/css" />
 
     <!-- toastr -->
-    <link rel="stylesheet" href="assets/libs/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/assets/libs/toastr/toastr.min.css">
 
 </head>
 
 <body>
-    <div class="full-screen d-flex vh-100">
+    <div class="full-screen d-flex">
 
-        <div class="modal fade" id="login-Modal" tabindex="-1" role="dialog" aria-labelledby="login-ModalLabel" aria-hidden="true">
+        <div class="modal fade" id="nickname-Modal" tabindex="-1" role="dialog" aria-labelledby="nickname-ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title font-size-16" id="login-ModalLabel">Participe do chat</h5>
+                        <h5 class="modal-title font-size-16" id="nickname-ModalLabel">Participe do chat</h5>
                     </div>
                     <div class="modal-body pt-4 pl-4 pr-4 pb-1">
                         <form id="nickname-form">
                             <div class="form-group mb-4">
                                 <label for="nickname-input">Qual seu nome?</label>
-                                <input type="text" class="form-control" id="nickname-input" placeholder="Digite aqui...">
+                                <input type="text" class="form-control" id="nickname-input" placeholder="Digite aqui..." autofocus>
                             </div>
-                            <div id="login-msg" class="alert alert-warning" role="alert">
+                            <div id="nickname-form-msg" class="alert alert-warning" role="alert">
                                 Digite <strong>seu nome ou apelido</strong>, por favor.
                             </div>
                         </form>
@@ -73,8 +76,7 @@
             <!-- video -->
 
             <div class="embed-responsive embed-responsive-16by9">
-                <!-- <iframe id="yt-video" src="https://www.youtube.com/embed/dMlRgFBfSbI?enablejsapi=1&controls=0&cc_load_policy=0&disablekb=1&fs=0&iv_load_policy=3&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-                <iframe id="yt-video" src="https://www.youtube.com/embed/-3F1B0VBews?enablejsapi=1&controls=0&cc_load_policy=0&disablekb=1&fs=0&iv_load_policy=3&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="yt-video" src="https://www.youtube.com/embed/N2EuCbWXTF8?enablejsapi=1&controls=0&cc_load_policy=0&disablekb=1&fs=0&iv_load_policy=3&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div id="video-overlay">
                     <div id="play-video" class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center">
                         <i class="ri-play-fill"></i>
@@ -97,46 +99,34 @@
             <!-- fim cta -->
         </div>
         <div class="user-chat d-flex flex-column flex-fill col-md-4 col-lg-3">
-            <div class="chat-header row align-items-start">
+            <div id="chat-header" class="row align-items-start">
                 <div class="col-md-12 pb-2 border-bottom">
                     <div class="row">
                         <div class="col-12">
                             <!-- icones -->
-                            <ul class="list-inline user-chat-nav text-center mb-0 col-12">
+                            <ul class="list-inline user-chat-nav text-center mb-0 col-12 d-flex justify-content-between">
 
                                 <li class="list-inline-item">
-                                    <button class="btn nav-btn dropdown-toggle" type="button" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Presentes">
-                                            <i class="ri-gift-line"></i>
-                                            <span class="badge badge-info">1</span>
-                                        </button>
+                                    <button class="btn nav-btn dropdown-toggle" type="button" data-trigger="hover" data-placement="bottom" title="Presentes">
+                                        <i class="ri-gift-line"></i>
+                                        <span class="badge badge-info">1</span>
+                                    </button>
                                 </li>
 
                                 <li class="list-inline-item">
-                                    <button type="button" class="btn nav-btn user-profile-show" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Pessoas na sala">
-                                            <i class="ri-user-2-line"></i>
-                                        </button>
+                                    <button type="button" class="btn nav-btn" data-trigger="hover" data-placement="bottom" title="Pessoas na sala">
+                                        <i class="ri-user-2-line"></i><span class="people-in-room"></span>
+                                    </button>
                                 </li>
 
                                 <li class="list-inline-item">
-                                    <a class="btn nav-btn" id="light-dark" href="#" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Claro / Escuro">
+                                    <a class="btn nav-btn" id="light-dark" href="#" data-trigger="hover" data-placement="bottom" title="Claro / Escuro">
                                         <i class="ri-sun-line theme-mode-icon"></i>
                                     </a>
                                 </li>
 
                             </ul>
                             <!-- fim icones -->
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 data-info-event">
-                            <!-- info event -->
-                            <ul class="list-inline user-chat-nav text-center mb-0 col-12">
-                                <li class="list-inline-item"></li>
-                                <li class="list-inline-item"><span id="people_room">200</span></li>
-                                <li class="list-inline-item"></li>
-                            </ul>
-                            <!-- fim info event -->
                         </div>
                     </div>
 
@@ -147,7 +137,13 @@
             <div class="chat-conversation row" data-simplebar>
                 <div class="col-md-12">
 
-                    <ul class="list-unstyled mb-0 mt-1">
+                    <ul class="list-unstyled mb-0 mt-1" id="messages">
+                        <!-- <li>
+                            <div class="chat-day-title">
+                                <span class="title">Márcia Maria Albuquerque Souza entrou na sala</span>
+                            </div>
+                        </li>
+
                         <li>
                             <div class="conversation-list">
                                 <div class="user-chat-content">
@@ -169,16 +165,15 @@
                         <li class="right">
                             <div class="conversation-list">
                                 <div class="chat-avatar">
-                                    <img src="assets/images/users/avatar-mario-guimaraes.jpg" alt="">
+                                    <img src="/assets/images/users/presenter.jpg" alt="">
                                 </div>
-
                                 <div class="user-chat-content">
                                     <div class="ctext-wrap">
                                         <div class="ctext-wrap-content">
                                             <p class="mb-0">
                                                 Boa noite Márcia Santos. Que bom que você chegou!
-
-                                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:02</span></p>
+                                            </p>
+                                            <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:02</span></p>
                                         </div>
                                     </div>
                                     <div class="conversation-name">Mário Guimarães</div>
@@ -227,7 +222,7 @@
                         <li class="right">
                             <div class="conversation-list">
                                 <div class="chat-avatar">
-                                    <img src="assets/images/users/avatar-mario-guimaraes.jpg" alt="">
+                                    <img src="/assets/images/users/presenter.jpg" alt="">
                                 </div>
 
                                 <div class="user-chat-content">
@@ -268,7 +263,7 @@
                         <li class="right">
                             <div class="conversation-list">
                                 <div class="chat-avatar">
-                                    <img src="assets/images/users/avatar-mario-guimaraes.jpg" alt="">
+                                    <img src="/assets/images/users/presenter.jpg" alt="">
                                 </div>
 
                                 <div class="user-chat-content">
@@ -285,43 +280,46 @@
                                 </div>
 
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
 
                 </div>
             </div>
             <!-- end chat conversation -->
 
-            <!-- login -->
-            <div class="row p-2 p-lg-3 border-top mb-0" id="login-chat">
+            <!-- nickname -->
+            <div id="nickname-button" class="row p-2 p-lg-3 border-top mb-2">
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary font-size-16 btn-lg btn-block waves-effect waves-light">
                         Participar do chat
                     </button>
                 </div>
             </div>
-            <!-- end login -->
+            <!-- end nickname -->
 
             <!-- chat message -->
-            <div class="chat-message row p-2 p-lg-2 pb-lg-3 border-top mb-0">
+            <div id="send-message" class="row p-2 p-lg-2 pb-lg-3 border-top mb-2 d-none">
                 <div class="col-md-12">
                     <!-- envia mensagem -->
                     <div class="row">
                         <div class="col">
-                            <label id="change-nickname">Mário Guimarães</label>
+                            <!-- <button id="nickname-label" type="button" class="btn btn-link">Link</button> -->
+                            <label id="nickname-label">Clique aqui</label>
                         </div>
                     </div>
                     <div class="row no-gutters">
                         <div class="col">
                             <div>
-                                <input type="text" class="form-control form-control-lg bg-light border-light" placeholder="Digite sua mensagem...">
+                                <form id="form-send-message">
+                                    <input id="send-message-text" type="text" class="form-control form-control-lg bg-light border-light" placeholder="Digite sua mensagem..." autocomplete="off" autofocus>
+                                </form>
                             </div>
                         </div>
                         <div class="col-auto">
                             <div class="chat-input-links ml-2">
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">
-                                        <button type="submit" class="btn btn-primary font-size-16 btn-lg chat-send waves-effect waves-light">
+                                        <button type="submit" form="form-send-message" class="btn btn-primary font-size-16 btn-lg chat-send waves-effect waves-light">
                                             <i class="ri-send-plane-2-fill"></i>
                                         </button>
                                     </li>
@@ -338,28 +336,27 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="assets/libs/jquery/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="/assets/libs/jquery/jquery.min.js"></script>
+    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="/assets/libs/node-waves/waves.min.js"></script>
 
     <!-- Magnific Popup-->
-    <script src="assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- owl.carousel js -->
-    <script src="assets/libs/owl.carousel/owl.carousel.min.js"></script>
-
-    <!-- page init -->
-    <script src="assets/js/pages/index.init.js"></script>
+    <script src="/assets/libs/owl.carousel/owl.carousel.min.js"></script>
 
     <!-- toastr -->
-    <script src="assets/libs/toastr/toastr.min.js"></script>
+    <script src="/assets/libs/toastr/toastr.min.js"></script>
 
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/youtube.js"></script>
-    <script src="assets/js/pages/webinar.js"></script>
+    <!-- socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
 
-
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/youtube.js"></script>
+    <script src="/assets/js/webinar/index.js"></script>
+    <script src="/assets/js/utils.js"></script>
 
 </body>
 

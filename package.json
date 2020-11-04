@@ -1,0 +1,30 @@
+{
+    "name": "webinar",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/server.js",
+    "scripts": {
+        "start": "node server/server.js",
+        "test": "mocha server/**/*.test.js",
+        "test-watch": "nodemon --exec \"npm test\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/marioguima/webinar.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/marioguima/webinar/issues"
+    },
+    "homepage": "https://github.com/marioguima/webinar#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "socket.io": "^2.3.0"
+    },
+    "devDependencies": {
+        "expect": "^26.6.2",
+        "mocha": "^8.2.1"
+    }
+}
