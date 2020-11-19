@@ -1,0 +1,74 @@
+npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
+
+npx sequelize-cli model:generate --name Event --attributes title:string,shortDescription:string,longDescription:string,image:string
+
+npx sequelize-cli model:generate --name Chat --attributes title:string,shortDescription:string,longDescription:string,image:string
+
+npx sequelize-cli model:generate --name Schedule --attributes date:date,timezone:string
+
+npx sequelize-cli model:generate --name Presenter --attributes name:string,role:string,image:string
+
+npx sequelize-cli model:generate --name Stream --attributes youtube:string,vimeo:string,file:string,embeded:string,showControls:boolean,showCountdown:boolean,showOnlineUsers:boolean,increaseOnlineUsers:integer
+
+npx sequelize-cli model:generate --name Subscriber --attributes name:string,email:string,phone:string,phone:string
+
+npx sequelize-cli model:generate --name Action --attributes action:string data:string
+
+
+action
+- video
+- gift
+
+data
+[video]
+- start
+- 10p
+- 25p
+- 50p
+- 75p
+- 90p
+- end
+- pause
+[gift]
+- click
+- id_do_gift
+
+
+data
+
+
+
+
+increasePercent
+- slow "10%"
+- medium "30%"
+- fast "70%"
+- veryfast "100%"
+
+increaseVelocity
+- intervalo em minutos
+
+increaseRangeStart:integer
+increaseRangeEnd:integer
+
+
+
+increaseMethod
+- growing "Cresce aos poucos até chegar ao número máximo"
+- fix "começa com um número fixo acrescentado ao número real de usuários"
+- variable "variável. cresce rapidamente e fica variando com intervalo de 10 para cima e 10 para baixo"
+
+
+
+timeWatchingReal
+
+timeInRoom
+
+
+
+
+        "define": {
+            "timestamps": true,
+            "underscored": true,
+            "underscoredAll": true,
+        }
