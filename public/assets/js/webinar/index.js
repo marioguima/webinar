@@ -1,5 +1,5 @@
 // document load
-$(function() {
+$(function () {
     const socket = io();
 
     // Join Chat
@@ -8,12 +8,12 @@ $(function() {
     $('#nickname-form-msg').hide();
 
     // chama o formulário para definir ou alterar o nickname
-    $('#nickname-label, #nickname-button').click(function(event) {
+    $('#nickname-label, #nickname-button').click(function (event) {
         $('#nickname-Modal').modal({ keyboard: false });
     });
 
     // submit do form do nickname
-    $("#nickname-form").on('submit', (function(event) {
+    $("#nickname-form").on('submit', (function (event) {
         event.preventDefault();
         var nickname = $("#nickname-input").val().trim();
 
@@ -59,12 +59,12 @@ $(function() {
 
     }));
 
-    $('#nickname-Modal').on('hidden.bs.modal', function(event) {
+    $('#nickname-Modal').on('hidden.bs.modal', function (event) {
         $('#nickname-form-msg').hide();
     });
 
     // formulário de envio de mensagem
-    $('#form-send-message').submit(function(e) {
+    $('#form-send-message').submit(function (e) {
         // evitando o carregamento da página
         e.preventDefault();
 
@@ -82,7 +82,7 @@ $(function() {
                 localStorage.sid = socket.id;
             }
 
-            if (localStorage.nickname != "" & localStorage.cid != "") {
+            if (localStorage.nickname != "" && localStorage.cid != "") {
 
                 var messageBody = {
                     from: localStorage.nickname,
@@ -124,11 +124,11 @@ $(function() {
     }
 
     // comuncation with server by socket.io
-    socket.on('connect', function() {
+    socket.on('connect', function () {
         // let params = window.location.search.substring(1)
         // params = JSON.parse('{"' + decodeURI(params).replace(/&/g, '","').replace(/\+/g, ' ').replace(/=/g, '":"') + '"}');
         let allParams = getAllUrlParams();
-        if (getAllUrlParams().c == localStorage.cid & localStorage.nickname !== undefined & localStorage.nickname != "") {
+        if (getAllUrlParams().c == localStorage.cid && localStorage.nickname !== undefined && localStorage.nickname != "") {
             imBack();
         } else {
             localStorage.cid = getAllUrlParams().c;
@@ -137,13 +137,13 @@ $(function() {
         }
     });
 
-    socket.on('nickname.seted', function(messageBody) {
+    socket.on('nickname.seted', function (messageBody) {
         // informa que a pessoa entrou na sala
         renderMessageJoinChat(messageBody);
     });
 
     function renderMessageJoinChat(messageBody) {
-        sHtml = `
+        let sHtml = `
             <div class="chat-day-title">
                 <span class="title">${messageBody.from} entrou na sala</span>
             </div>
@@ -154,10 +154,10 @@ $(function() {
         scrollToBottom();
     }
 
-    socket.on('welcome', function(messageBody) {
+    socket.on('welcome', function (messageBody) {
         // recepciona a pessoa que acabou de entrar
         // aguarda entre 5 a 10 segundos, para parecer mais real
-        setTimeout(async function() {
+        setTimeout(async function () {
             renderMessageAdmin(messageBody);
         }, getRandomInt(5, 10) * 1000);
     });
@@ -166,7 +166,7 @@ $(function() {
     function renderMessageAdmin(messageBody) {
         const formattedTime = moment(messageBody.createdAt).format('LT');
 
-        sHtml = `
+        let sHtml = `
         <div class="conversation-list">
             <div class="chat-avatar">
                 <img src="/assets/images/users/presenter.jpg" alt="">
@@ -193,13 +193,13 @@ $(function() {
         scrollToBottom();
     }
 
-    socket.on('nickname.changed', function(messageBody) {
+    socket.on('nickname.changed', function (messageBody) {
         // informa que a pessoa entrou na sala
         renderMessageChangedNickname(messageBody);
     });
 
     function renderMessageChangedNickname(messageBody) {
-        sHtml = `
+        let sHtml = `
             <div class="chat-day-title">
                 <span class="title"><i>${messageBody.from}</i> mudou para <strong>${messageBody.data}</strong></span>
             </div>
@@ -210,14 +210,14 @@ $(function() {
         scrollToBottom();
     }
 
-    socket.on('message.share', function(messageBody) {
+    socket.on('message.share', function (messageBody) {
         renderMessageParticipant(messageBody);
     });
 
     function renderMessageParticipant(messageBody) {
         const formattedTime = moment(messageBody.createdAt).format('LT');
 
-        sHtml = `
+        let sHtml = `
                 <div class="conversation-list">
                     <div class="user-chat-content">
                         <div class="ctext-wrap">
@@ -241,11 +241,11 @@ $(function() {
         scrollToBottom();
     }
 
-    socket.on('cta', function(messageBody) {
+    socket.on('cta', function (messageBody) {
         $('#footer').html(messageBody.data);
     });
 
-    socket.on('people-in-room', function(messageBody) {
+    socket.on('people-in-room', function (messageBody) {
         $('.people-in-room').text(messageBody.data);
     });
 
@@ -264,7 +264,7 @@ $(function() {
 
 
     // toastr
-    $('#cta-btn').on('click', function() {
+    $('#cta-btn').on('click', function () {
         toastr["success"]("Você conseguiu garantir a sua vaga", "Parabéns Bianca Santos");
 
         toastr.options = {
